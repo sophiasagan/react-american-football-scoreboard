@@ -1,5 +1,5 @@
 //TODO: STEP 1 - Import the useState hook.
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import "./App.css";
 import BottomRow from "./BottomRow";
 
@@ -9,6 +9,8 @@ function App() {
 
   const [homeScore, setScoreLions] = useState(0);
   const [awayScore, setScoreTigers] = useState(0);
+  //const [inQuarter, setInQuarter] = useState(0);
+  //const [timer, setTimer] = useState()
 
   return (
     <div className="container">
@@ -31,19 +33,37 @@ function App() {
       </section>
       <section className="buttons">
         <div className="homeButtons">
+
           {/* TODO STEP 4 - Now we need to attach our state setter functions to click listeners. */}
           <button className="homeButtons__touchdown" onClick ={ () => setScoreLions(homeScore + 7)}>Home Touchdown</button>
           <button className="homeButtons__fieldGoal" onClick ={ () => setScoreLions(homeScore + 3)}>Home Field Goal</button>
-          <button className="resetButton_score" onClick ={ () => setScoreLions(0) }>Reset Score</button>
+          <button className="resetButton" onClick ={ () => setScoreLions(0) }>Reset Score</button>
         </div>
         <div className="awayButtons">
-          <button className="awayButtons__touchdown" onClick ={ () => setScoreTigers(homeScore + 7)}>Away Touchdown</button>
-          <button className="awayButtons__fieldGoal" onClick ={ () => setScoreTigers(homeScore + 7)}>Away Field Goal</button>
-          <button className="resetButton_score" onClick ={ () => setScoreTigers(0) }>Reset Score</button>
+          <button className="awayButtons__touchdown" onClick ={ () => setScoreTigers(awayScore + 7)}>Away Touchdown</button>
+          <button className="awayButtons__fieldGoal" onClick ={ () => setScoreTigers(awayScore + 3)}>Away Field Goal</button>
+          <button className="resetButton" onClick ={ () => setScoreTigers(0) }>Reset Score</button>
         </div>
       </section>
     </div>
   );
+	const [ time, setTime ] = useState(900);
+	const minutes = Math.floor(time / 60).toString().padStart(2, '0');
+	const seconds = (time % 60).toString().padStart(2, '0');
+	useEffect(() => {
+		setInterval(() => {
+			setTime(newTime => newTime - 1);
+		}, 1000);
+	}, []);
+	return (
+		<div className="timer">
+			{minutes}:{seconds}
+		</div>
+	);
+
+
+  
 }
 
 export default App;
+

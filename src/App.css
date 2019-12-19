@@ -9,9 +9,9 @@
   background-color: #0b5402;
   color: white;
   border-radius: 0.5rem;
-  margin-top: 10rem;
+  margin-top: 5rem;
   padding: 5rem;
-  border: 4px solid #aaaaaa;
+  border: 4px solid #000000;
 }
 
 .topRow {
@@ -20,6 +20,7 @@
   place-items: center;
   /* height: 20rem; */
 }
+
 
 .home,
 .away {
@@ -34,11 +35,11 @@
 }
 
 .home {
-  background-color: #656565;
+  background-color: hsl(253, 91%, 46%);
 }
 
 .away {
-  background-color: #af750a;
+  background-color: #cf8a09;
 }
 
 .home__name,
@@ -120,3 +121,7 @@
   margin: 1rem;
   border-radius: 4px;
 }
+.resetButton{
+  margin: 1rem;	  
+  border-radius: 4px;
+}	
